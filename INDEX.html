@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura OdontoMarketing - Sua Excelência, Reconhecida. Sua Agenda, Previsível.</title>
+    <meta name="description" content="Implementamos o sistema de marketing que transforma sua autoridade em um fluxo constante de pacientes que valorizam seu trabalho.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --secondary-gold: #c5a47e;
+            --accent-gray: #e0e0e0;
+            --background-light: #ffffff;
+            --text-color: #333333;
+            --font-serif-luxury: 'Playfair Display', serif;
+            --font-sans-luxury: 'Montserrat', sans-serif;
+        }
+
+        *, ::before, ::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: var(--font-sans-luxury);
+            background-color: var(--background-light);
+            color: var(--text-color);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-serif-luxury);
+            color: var(--primary-dark);
+            font-weight: 400;
+            line-height: 1.3;
+        }
+        h1 { font-size: 3.2rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.5rem; }
+
+        .container {
+            max-width: 1120px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--accent-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img { height: 50px; }
+        .main-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+        .main-menu a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+        .main-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-gold);
+            transition: width 0.3s ease;
+        }
+        .main-menu a:hover { color: var(--secondary-gold); }
+        .main-menu a:hover::after { width: 100%; }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-family: var(--font-sans-luxury);
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .btn-gold {
+            background-color: var(--secondary-gold);
+            color: white;
+            border: 2px solid var(--secondary-gold);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .section { padding: 6rem 0; }
+        .section-title { text-align: center; margin-bottom: 4rem; }
+
+        /* CORRIGIDO: Imagem de fundo local */
+        .hero {
+            text-align: center;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("heroi.jpg");
+            background-size: cover;
+            background-position: center;
+            padding: 10rem 0;
+            color: white;
+        }
+        .hero h1 { max-width: 800px; margin: 0 auto 1.5rem auto; color: white; }
+        .hero p { max-width: 700px; margin: 0 auto 2.5rem auto; font-size: 1.2rem; color: #f0f0f0; }
+
+        .solucoes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .solucoes-text p { margin-bottom: 1.5rem; }
+        .solucoes-grid img { border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+        #servicos { background-color: #fafafa; }
+        .servicos-list { max-width: 800px; margin: 0 auto; }
+        .accordion-item {
+            background-color: white;
+            border: 1px solid var(--accent-gray);
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        .accordion-header {
+            background: none;
+            width: 100%;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+        }
+        .accordion-header h3 { font-family: var(--font-sans-luxury); font-size: 1.2rem; margin: 0; }
+        .accordion-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .accordion-content-inner { padding: 0 1.5rem 1.5rem 1.5rem; }
+        .accordion-content ul { list-style-position: inside; padding-left: 1rem; }
+        .text-gold { color: var(--secondary-gold); font-weight: bold; }
+        
+        .accordion-item.is-open .accordion-content {
+            max-height: 600px;
+        }
+        .accordion-item.is-open .accordion-icon { transform: rotate(180deg); }
+
+        #contato { background-color: var(--primary-dark); color: white; text-align: center; }
+        #contato h2, #contato p { color: white; }
+
+        footer { background-color: #111; color: #aaa; text-align: center; padding: 2rem 0; font-size: 0.9rem; }
+        
+        .mobile-menu-button { display: none; background: none; border: none; cursor: pointer; }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .section { padding: 4rem 0; }
+            .hero { padding: 8rem 0; }
+            .mobile-menu-button { display: block; }
+            .main-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                padding: 1rem;
+            }
+            .main-menu.is-open { display: flex; }
+            .main-menu ul { flex-direction: column; gap: 1rem; }
+            .solucoes-grid { grid-template-columns: 1fr; }
+            .solucoes-grid img { order: -1; margin-bottom: 2rem; }
+        }
+     </style>
+ </head>
+ <body>
+ 
+     <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <img src="AURA ODONTOMARKETING.jpg" alt="Logomarca da Aura OdontoMarketing">
+                </a>
+                <div class="main-menu">
+                    <ul>
+                        <li><a href="#solucoes">Soluções</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="https://wa.me/5521966762186" target="_blank" class="btn btn-gold">FALE CONOSCO</a></li>
+                    </ul>
+                </div>
+                <button class="mobile-menu-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </nav>
+        </div>
+     </header>
+ 
+     <main>
+         <section class="section hero">
+            <div class="container">
+                <h1>Sua excelência clínica, enfim, reconhecida. Sua agenda, enfim, previsível.</h1>
+                <p>Nós implementamos o sistema de marketing que transforma sua autoridade em um fluxo constante de pacientes que valorizam seu trabalho.</p>
+                <a href="https://wa.me/5521966762186" target="_blank" class="btn btn-gold">QUERO PREVISIBILIDADE NA MINHA CLÍNICA</a>
+            </div>
+         </section>
+ 
+         <section id="solucoes" class="section">
+            <div class="container">
+                <div class="solucoes-grid">
+                    <div class="solucoes-text">
+                        <h2>O Fim da Imprevisibilidade na Odontologia</h2>
+                        <p>Sabemos que você se tornou um especialista em sua área, não em marketing. Nossa missão é construir a ponte entre sua autoridade clínica e o paciente ideal, usando um sistema baseado em dados, não em "truques". O resultado é a tranquilidade para você focar no que realmente importa: a odontologia.</p>
+                    </div>
+                    <div>
+                        <img src="dracarolina.jpg" alt="Especialista em odontologia, representando a Dra. Carolina">
+                    </div>
+                </div>
+            </div>
+         </section>
+ 
+         <section id="servicos" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Um Sistema para Cada Estágio da Sua Clínica</h2>
+                    <p>Escolha o plano ideal para o momento da sua clínica e acelere seus resultados.</p>
+                </div>
+                <div class="servicos-list">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h3>Pacote 1 – Fundação Digital</h3>
+                            <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p class="text-gold">O ponto de partida essencial para construir sua presença online com profissionalismo e ética.</p>
+                                <ul>
+                                    <li>Otimização Completa do Google Meu Negócio.</li>
+                                    <li>Estruturação de Perfis Estratégicos no Instagram e Facebook.</li>
+                                    <li>Criação de 4 Conteúdos Mensais de Manutenção da sua Presença.</li>
+                                    <li>Selo de Conformidade Ética (CFO) em todas as publicações.</li>
+                                    <li>Relatório Mensal de Desempenho da sua Presença Digital.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h3>Pacote 2 – Geração de Pacientes</h3>
+                            <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content">
+                             <div class="accordion-content-inner">
+                                <p class="text-gold">A solução completa para atrair um fluxo constante de novos pacientes qualificados para sua clínica.</p>
+                                <ul>
+                                    <li>**Inclui tudo do Pacote 1**.</li>
+                                    <li>Gestão Estratégica de Campanhas de Anúncios Online (Google e Meta Ads).</li>
+                                    <li>Desenvolvimento de Landing Pages de Alta Conversão.</li>
+                                    <li>Criação de 6 Conteúdos Mensais Otimizados para Atração de Leads.</li>
+                                    <li>Relatório de Performance focado em Custo por Lead (CPL).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <h3>Pacote 3 – Crescimento Acelerado</h3>
+                            <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content">
+                             <div class="accordion-content-inner">
+                                <p class="text-gold">Para clínicas estabelecidas que buscam escalar seus resultados e se consolidar como referência no mercado.</p>
+                                <ul>
+                                    <li>**Inclui tudo do Pacote 2**.</li>
+                                    <li>Implementação de Automações de Nutrição de Leads (WhatsApp ou E-mail).</li>
+                                    <li>Criação de 8 Conteúdos Mensais de Alto Impacto (Incluindo Vídeos Curtos).</li>
+                                    <li>Reunião Estratégica Mensal para alinhamento e otimização (30 min).</li>
+                                    <li>Relatório Completo de Performance com foco em Retorno sobre Investimento (ROI) e Custo de Aquisição de Cliente (CAC).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </section>
+ 
+         <section id="contato" class="section">
+            <div class="container">
+                <h2>Sua agenda previsível começa com uma conversa.</h2>
+                <p>Uma conversa sem compromisso pode transformar o futuro da sua prática odontológica. Estamos prontos para te ouvir e apresentar a solução ideal para você.</p>
+                <a href="https://wa.me/5521966762186" target="_blank" class="btn btn-gold">QUERO PREVISIBILIDADE NA MINHA CLÍNICA</a>
+            </div>
+         </section>
+     </main>
+ 
+     <footer>
+        <div class="container">
+            <p>Aura OdontoMarketing</p>
+            <p>© 2025. Todos os direitos reservados.</p>
+        </div>
+     </footer>
+ 
+     <script>
+         document.addEventListener('DOMContentLoaded', function () {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('is-open');
+                    accordionItems.forEach(i => i.classList.remove('is-open'));
+                    if (!isOpen) {
+                        item.classList.add('is-open');
+                    }
+                });
+            });
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mainMenu = document.querySelector('.main-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mainMenu.classList.toggle('is-open');
+            });
+         });
+     </script>
+ 
+ </body>
+ </html>
